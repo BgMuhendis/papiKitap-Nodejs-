@@ -1,3 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
+  <title> Papikitap </title>
+  <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Open_book_nae_02.svg/1280px-Open_book_nae_02.svg.png" type="image/icon type">
+</head>
+
+<body>
 <div class="container mt-4">
     <div class="card ">
           <img src="<%- imageData.url  %> " height="100%" width="100%">
@@ -7,9 +21,49 @@
                 <b>Name:</b>
                 <i class="title is-4"><%- imageData.name%> </i>
                 <button class="btn btn-warning " type="button" data-toggle="modal" data-target="#exampleModal"  class="btn btn-warning">EDIT</button>
-                <button class="btn btn-danger">Delete</button>
+                <button type="submit" class="btn btn-danger">DELETE</button>
               </div>
             </form>
           </div>  
     </div>
   </div>
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">IMAGE URL SAVE</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="/images/update/<%= imageData._id  %> " method="POST">
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Url:</label>
+              <input type="text" class="form-control" id="recipient-name" name="url" value="<%= imageData.url %>">
+            </div>
+    
+            <div class="form-group">
+              <label for="message-text" class="col-form-label">Name:</label>
+              <input type="text" class="form-control" id="recipient-name" name="name" value="<%= imageData.name %>">
+            </div>
+       
+        <div class="modal-footer">
+          <input type="submit" value="Close" class="btn btn-secondary" data-dismiss="modal">
+          <input type="submit" value="Save" class="btn btn-primary">
+        </div>
+        </div>
+      </form>
+
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

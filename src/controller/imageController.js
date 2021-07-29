@@ -56,13 +56,39 @@ const deleteImage = async (req,res) =>{
 
 }
 
-const getImagesFromDb= async (value=undefined)=>{
-    if(!value){
-        return await User.find({}).sort({_id:-1})
-        
-    }else{
-        return await User.findOne({_id:value});
+const updateImage = async (req,res)=>{
+    const id = req.params.id
 
+    try {
+        const findImageData= await getImagesFromDb(id);
+        if(findImageData){
+
+            const result = await User.findByIdAndUpdate(id,req.body);
+            if(result){
+                res.redirect(`/images/${id}`);
+            }else{
+                console.log("İşlem gerçekleştirilemedi");
+            }
+
+        }else{
+            console.log("Kullanıcı Bulunamadı");
+        }
+    } catch (error) {
+        
+    }
+}
+
+const getImagesFromDb= async (value=undefined)=>{
+    try {
+        if(!value){
+            return await User.find({}).sort({_id:-1})
+            
+        }else{
+            return await User.findOne({_id:value});
+    
+        }
+    } catch (error) {
+        
     }
 }
 
@@ -71,5 +97,6 @@ module.exports = {
     showImages,
     saveImage,
     deleteImage,
-    getIdImage
+    getIdImage,
+    updateImage
 }
