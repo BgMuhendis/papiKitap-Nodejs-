@@ -71,7 +71,7 @@ const updateImage = async (req,res)=>{
             }
 
         }else{
-            console.log("Kullanıcı Bulunamadı");
+            console.log("Resim Bulunamadı");
         }
     } catch (error) {
         
