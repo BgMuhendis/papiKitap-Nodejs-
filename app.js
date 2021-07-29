@@ -3,6 +3,7 @@ const app = express();
 require("dotenv").config();
 const PORT = process.env.PORT || 3000;
 const path=require("path");
+const flash=require("connect-flash");
 const imageRouter=require("./src/router/imageRouter");
 const expressLayout=require('express-ejs-layouts');
 
@@ -12,7 +13,6 @@ app.use(express.urlencoded({extended:true}));
 app.use(expressLayout);
 app.set("view engine","ejs");
 app.set("views",path.resolve(__dirname,"./src/views"));
-
 
 app.use("/images",imageRouter);
 
