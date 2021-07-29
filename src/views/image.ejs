@@ -1,0 +1,15 @@
+<div class="container mt-4">
+    <div class="card ">
+          <img src="<%- imageData.url  %> " height="100%" width="100%">
+          <div class="modal-body">
+            <form  method="POST" action="/images/delete/<%= imageData._id %>?_method=DELETE">
+              <div class="modal-footer">
+                <b>Name:</b>
+                <i class="title is-4"><%- imageData.name%> </i>
+                <button class="btn btn-warning " type="button" data-toggle="modal" data-target="#exampleModal"  class="btn btn-warning">EDIT</button>
+                <button class="btn btn-danger">Delete</button>
+              </div>
+            </form>
+          </div>  
+    </div>
+  </div>
