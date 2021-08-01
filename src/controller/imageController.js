@@ -33,7 +33,6 @@ const saveImage = async (req,res)=>{
         const addUser = new User(req.body);
         const result = await addUser.save();
         if(result){
-            const images = await getImagesFromDb();
             console.log("Veriler Başarıyla kaydedildi");
             res.redirect("/images");
         }
