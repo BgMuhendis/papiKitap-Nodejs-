@@ -46,7 +46,6 @@ const deleteImage = async (req,res) =>{
         const deleteImage = await User.deleteOne({_id:req.params.id});
         if(deleteImage){
             console.log("Başarıyla silme işlemi gerçekleşti");
-            const images = await getImagesFromDb();
             res.redirect("/images");
         }
     } catch (error) {
